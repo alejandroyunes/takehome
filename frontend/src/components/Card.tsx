@@ -1,5 +1,22 @@
+import React from 'react';
+
 export default function Card() {
-  // Please fetch the user data from the API
+  const [userData, setUserData] = React.useState(null);
+
+  React.useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetch('/api/user/1');
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    fetchUserData();
+  }, []);
+
 
   return <section className="w-full h-full">
     <article className="max-w-screen-lg mx-auto bg-gray-100 rounded-lg">
@@ -58,11 +75,7 @@ export default function Card() {
                 </p>
 
                 <p className="text-gray-800 font-semibold text-xs mt-4 ml-16 md:ml-20">
-                  <svg width="14px" height="14px" viewBox="0 0 24 24" fill="green" xmlns="http://www.w3.org/2000/svg">
-                    <g id="Percentage / Diamond_Shape">
-                      <path id="Vector" d="M12 2L22 12L12 22L2 12L12 2Z" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </g>
-                  </svg>
+                  <img src="/icons/diamond.svg" alt="diamond icon" className="w-4 h-4 mr-2 mb-0 md:mb-2" />
                 </p>
               </div>
 
