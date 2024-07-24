@@ -15,6 +15,10 @@ export default function Home() {
       name: `New Post!`,
     });
   };
+ 
+  // const latestUser = api.githubUser.getLatestUser.useQuery("1");
+
+  // console.log(latestUser);
 
   return (
     <>

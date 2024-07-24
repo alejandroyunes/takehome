@@ -1,5 +1,7 @@
 import { postRouter } from "~/server/api/routers/post";
-import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { createCallerFactory, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { z } from "zod";
+import { githubUserRouter } from "./routers/getUser";
 
 /**
  * This is the primary router for your server.
@@ -8,6 +10,7 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   post: postRouter,
+  // githubUser: githubUserRouter,
 });
 
 // export type definition of API

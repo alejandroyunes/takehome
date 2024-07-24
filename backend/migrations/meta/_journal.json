@@ -8,6 +8,13 @@
       "when": 1721840116314,
       "tag": "0000_living_slyde",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1721852800427,
+      "tag": "0001_clever_argent",
+      "breakpoints": true
     }
   ]
 }
