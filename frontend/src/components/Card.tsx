@@ -88,7 +88,7 @@ export default function Card() {
 
         <div className="sm:hidden">
           <div className="relative group">
-            <button className="flex justify-center items-center px-3 py-1 mr-2 bg-blue-200 text-blue-800 rounded-full">Select <span className="ml-2"><img src="/icons/chevronDown.svg" alt="instagram icon" className="w-4 h-4" /></span></button>
+            <button className="flex justify-center items-center px-3 py-1 mr-2 bg-blue-200 text-blue-800 rounded-full">Select <span className="ml-2 group-hover:rotate-180 transition-transform duration-300"><img src="/icons/chevronDown.svg" alt="instagram icon" className="w-4 h-4" /></span></button>
             <div className="absolute hidden group-hover:flex flex-col bg-white shadow-lg rounded-lg p-2 bottom-full w-40">
               <button className="flex justify-center items-center px-3 py-1 mr-2 bg-green-200 text-green-800 rounded-full hover:bg-green-300">Accept <span className="ml-2"><img src="/icons/chevronDown.svg" alt="instagram icon" className="w-4 h-4" /></span></button>
               <button className="flex justify-center items-center px-3 py-1 mt-2 mr-2 bg-red-200 text-red-800 rounded-full hover:bg-red-300">Reject <span className="ml-2"><img src="/icons/stopSvg.svg" alt="instagram icon" className="w-4 h-4" /></span></button>
