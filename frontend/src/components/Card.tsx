@@ -81,15 +81,19 @@ export default function Card() {
 
           <div>
             <div className="mt-2">
-              <p className="text-gray-700 text-sm md:text-base ml-16 md:ml-20">
-                writer and designer
-              </p>
-              <p className="text-gray-700 text-sm md:text-base ml-16 md:ml-20">
-                rsvp below <span className="text-gray-600 underline cursor-pointer">@terms_eccles</span> on tax day
-              </p>
-              <p className="text-gray-700 text-sm md:text-base ml-16 md:ml-20">
-                follow for event updates
-              </p>
+              {userData ? <p className="text-gray-700 text-sm md:text-base ml-16 md:ml-20">
+                {userData.description.split('\n')[0]}
+              </p> : <div className="h-2 bg-gray-200 rounded w-32 my-2.5 animate-pulse infinite ml-16 md:ml-20"></div>}
+
+              {userData ? <p className="text-gray-700 text-sm md:text-base ml-16 md:ml-20">
+                {userData.description.split('\n')[1]} <span className="text-gray-600 underline cursor-pointer">@terms_eccles</span>
+              </p> : <div className="h-2 bg-gray-200 rounded w-40 my-2.5 animate-pulse infinite ml-16 md:ml-20"></div>}
+
+              {userData ? <p className="text-gray-700 text-sm md:text-base ml-16 md:ml-20">
+                {userData.description.split('\n')[2]}
+              </p> : <div className="h-2 bg-gray-200 rounded w-28 my-2.5 animate-pulse infinite ml-16 md:ml-20"></div>}
+
+
             </div>
 
             <div className="flex flex-row justify-between mb-4">
@@ -98,9 +102,17 @@ export default function Card() {
                   High Potential | <span className="text-gray-400 text-sm md:text-base hover:text-gray-700 underline cursor-pointer">View Application</span>
                 </p>
 
-                <p className="text-gray-800 font-semibold text-xs mt-4 ml-16 md:ml-20">
-                  <img src="/icons/diamond.svg" alt="diamond icon" className="w-4 h-4 mr-2 mb-0 md:mb-2" />
+                <p className="flex flex-row text-gray-800 font-semibold text-xs mt-4 ml-16 md:ml-20">
+                  {userData && Array.from({ length: 16 }).map((_, index) => (
+                    <img 
+                      key={index} 
+                      src={index < userData.potential ? "/icons/diamond.svg" : "/icons/diamond-light.svg"} 
+                      alt="diamond icon" 
+                      className="w-3 h-3 mr-2 mb-0 md:mb-2" 
+                    />
+                  ))}
                 </p>
+
               </div>
 
               <div className="flex flex-row justify-between items-center mr-4">
@@ -115,11 +127,10 @@ export default function Card() {
         </div>
 
         <div className="flex justify-between p-4 md:p-4 list-none overflow-hidden mt-3 w-full md:w-2/5">
-          <img src="https://picsum.photos/200/300" alt="" className="object-cover rounded-lg w-full h-48 mr-1 p-1 md:p-0" />
-          <img src="https://picsum.photos/200/300" alt="" className="object-cover rounded-lg w-full h-48 mr-1 p-1 md:p-0" />
-          <img src="https://picsum.photos/200/300" alt="" className="object-cover rounded-lg w-full h-48 p-1 md:p-0" />
+          {userData ? userData.pics.map((pic, index) => (
+            <img key={index} src={pic} alt="" className="object-cover rounded-lg w-48 h-48 mr-1 p-1 md:p-0" />
+          )) : <div className="h-48 bg-gray-200 rounded w-48 mr-1 p-1 md:p-0 my-1.5 animate-pulse infinite"></div>}
         </div>
-
       </div>
 
       <div className="flex justify-between space-x-2 p-3 bg-gray-200 rounded-bl-lg rounded-br-lg">
