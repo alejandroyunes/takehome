@@ -3,19 +3,7 @@ import Head from "next/head";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const latestPost = api.post.getLatest.useQuery();
   const latestUser = api.post.getLatestUser.useQuery();
-  const createPostMutation = api.post.create.useMutation({
-    onSuccess: () => {
-      latestPost.refetch();
-    },
-  });
-  const createPost = () => {
-    createPostMutation.mutate({
-      name: `New Post!`,
-    });
-  };
-
   return (
     <>
       <Head>
