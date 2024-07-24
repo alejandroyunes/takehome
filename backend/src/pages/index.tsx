@@ -1,9 +1,12 @@
 import Head from "next/head";
+import { useState, useEffect } from "react"; // Added this line
 
 import { api } from "~/utils/api";
 
 export default function Home() {
+
   const latestUser = api.post.getLatestUser.useQuery();
+
   return (
     <>
       <Head>
@@ -14,11 +17,12 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
           <p className="text-lg font-semibold">
-            Latest Github User: 
+            Latest Github User:
+
             {latestUser.data && (
               <>
                 <span className="text-blue-500">
-                  {`${latestUser.data.login}`}
+                  {`${latestUser.data.login ? latestUser.data.login : 'loading'} `}
                 </span>
                 <br />
                 <span className="text-gray-500">
@@ -26,7 +30,7 @@ export default function Home() {
                 </span>
                 <br />
                 <span className="text-gray-500">
-                  {`Avatar:`} 
+                  {`Avatar:`}
                   <img width={100} height={100} className="rounded-full" src={latestUser.data.avatarUrl ?? ''} alt="avatar" />
                 </span>
               </>

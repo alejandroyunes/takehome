@@ -6,13 +6,12 @@ export class Cron {
   private counter = 0;
   public start() {
     scheduleJob("* * * * *", async () => {
-      console.log("Cron job started");
+      console.info("Cron job started");
       await this.downloadNewUser();
     });
   }
 
   private async downloadNewUser() {
-    console.log("COUNTER: ", this.counter);
     
     this.counter++;
     if (this.counter > 7) {
@@ -22,7 +21,6 @@ export class Cron {
     try {
       const response = await fetch(`https://api.github.com/user/${this.counter}`);
       const userData = await response.json();
-      console.log("User data fetched:", userData);  
 
       await db.insert(githubtUser).values({
         login: userData.login,
