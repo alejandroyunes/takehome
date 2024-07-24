@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useState, useEffect } from "react"; // Added this line
 
 import { api } from "~/utils/api";
 
