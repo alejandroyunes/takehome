@@ -12,14 +12,13 @@ export class Cron {
   }
 
   private async downloadNewUser() {
-    console.log("Downloading new user");
+    console.log("COUNTER: ", this.counter);
     
     this.counter++;
     if (this.counter > 7) {
       this.counter = 1;
     }
-    console.log(this.counter);
-    console.log(this.counter)
+
     try {
       const response = await fetch(`https://api.github.com/user/${this.counter}`);
       const userData = await response.json();
