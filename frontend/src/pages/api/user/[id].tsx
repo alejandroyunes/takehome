@@ -7,12 +7,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     id: id as string,
     name: "Diego Segura",
     location: "New York, NY",
-    avatar: "",
+    avatar: "https://picsum.photos/200/300",
     description: "writer and designer\nrsvp below\nfollow for event updates",
     potential: 14,
     instagram: "@messybirkin",
     instagram_followers: "128k",
     tiktok: "@messybirkin",
-    pics: ["", "", ""],
+    pics: ["https://picsum.photos/200/300", "https://picsum.photos/200/300", "https://picsum.photos/200/300"],
   });
 }

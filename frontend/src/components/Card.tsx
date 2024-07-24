@@ -1,7 +1,19 @@
-import React from 'react';
+import React from 'react'
+
+type UserData = {
+  name: string
+  location: string
+  avatar: string
+  description: string
+  potential: number
+  instagram: string
+  instagram_followers: number
+  tiktok: string
+  pics: string[]
+}
 
 export default function Card() {
-  const [userData, setUserData] = React.useState(null);
+  const [userData, setUserData] = React.useState<UserData | null>(null);
 
   React.useEffect(() => {
     async function fetchUserData() {
@@ -17,6 +29,7 @@ export default function Card() {
     fetchUserData();
   }, []);
 
+  console.log('data', userData);
 
   return <section className="w-full h-full">
     <article className="max-w-screen-lg mx-auto bg-gray-100 rounded-lg">
@@ -28,27 +41,38 @@ export default function Card() {
           <div className="flex items-center justify-between">
 
             <div className="flex flex-row items-center">
-              <img src="https://picsum.photos/200/300" alt="avatar" className="object-cover w-8 h-8 md:w-12 md:h-12 rounded-full mr-4 ml-4" />
+              {userData
+                ? <img src={userData?.avatar} alt="avatar" className="object-cover w-8 h-8 md:w-12 md:h-12 rounded-full mr-4 ml-4" />
+                : <div className="h-2 bg-gray-200 object-cover w-8 h-8 md:w-12 md:h-12 rounded-full my-1.5 animate-pulse infinite mr-4 ml-4"></div>}
 
               <div>
-                <h1 className="text-xl md:text-3xl font-semibold">Diego Segura</h1>
-                <p className="text-gray-500 text-md md:text-xl">New York, NY</p>
+                {userData ? (
+                  <>
+                    <h1 className="text-xl md:text-3xl font-semibold">{userData.name}</h1>
+                    <p className="text-gray-500 text-md md:text-xl">{userData.location}</p>
+                  </>
+                ) : (
+                  <div >
+                    <div className="h-2 bg-gray-300 rounded w-32 my-5 animate-pulse infinite"></div>
+                    <div className="h-2 bg-gray-200 rounded w-24 my-1.5 animate-pulse infinite"></div>
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="flex">
 
-              <div className="flex justify-center items-center mr-4 rounded-full p-2 px-4 bg-gray-200">
+              <div className="flex justify-center items-center mr-4 rounded-full p-2 px-4 bg-gray-200 cursor-pointer">
                 <img src="/icons/instagram.svg" alt="instagram icon" className="w-4 h-4 sm:mr-2" />
                 <span className="text-gray-700 text-xs md:text-base font-semibold hidden lg:block">
-                  Ver perfil
+                  {userData ? `${userData.instagram} | ${userData.instagram_followers}` : <div className="h-2 bg-gray-200 rounded w-8 my-1.5 animate-pulse infinite"></div>}
                 </span>
               </div>
 
-              <div className="flex justify-center items-center mr-4 rounded-full p-2 px-4 bg-gray-200">
+              <div className="flex justify-center items-center rounded-full p-2 px-4 bg-gray-200 cursor-pointer">
                 <img src="/icons/tiktok.svg" alt="tiktok icon" className="w-4 h-4 sm:mr-2" />
                 <span className="text-gray-700 text-xs md:text-base font-semibold hidden lg:block">
-                  Ver perfil
+                  {userData ? `${userData.tiktok}` : <div className="h-2 bg-gray-200 rounded w-8 my-1.5 animate-pulse infinite"></div>}
                 </span>
               </div>
             </div>
