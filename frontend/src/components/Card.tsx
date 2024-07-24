@@ -18,18 +18,16 @@ export default function Card() {
   React.useEffect(() => {
     async function fetchUserData() {
       try {
-        const response = await fetch('/api/user/1');
-        const data = await response.json();
-        setUserData(data);
+        const response = await fetch('/api/user/1')
+        const data = await response.json()
+        setUserData(data)
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching user data:', error)
       }
     }
 
-    fetchUserData();
-  }, []);
-
-  console.log('data', userData);
+    fetchUserData()
+  }, [])
 
   return <section className="w-full h-full">
     <article className="max-w-screen-lg mx-auto bg-gray-100 rounded-lg">
