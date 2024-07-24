@@ -1,33 +1,8 @@
 import React from 'react'
-
-type UserData = {
-  name: string
-  location: string
-  avatar: string
-  description: string
-  potential: number
-  instagram: string
-  instagram_followers: number
-  tiktok: string
-  pics: string[]
-}
+import { useUserData } from '../utils/fetchData'
 
 export default function Card() {
-  const [userData, setUserData] = React.useState<UserData | null>(null);
-
-  React.useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const response = await fetch('/api/user/1')
-        const data = await response.json()
-        setUserData(data)
-      } catch (error) {
-        console.error('Error fetching user data:', error)
-      }
-    }
-
-    fetchUserData()
-  }, [])
+  const userData = useUserData()
 
   return <section className="w-full h-full">
     <article className="max-w-screen-lg mx-auto bg-gray-100 rounded-lg">
