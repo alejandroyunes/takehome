@@ -12,7 +12,6 @@ export default function Home() {
           <h1 className="text-2xl font-extrabold tracking-tight">
             Devotion Frontend Take Homex
           </h1>
-          <img src="card.png" alt="card" />
           <Card />
         </div>
       </main>
